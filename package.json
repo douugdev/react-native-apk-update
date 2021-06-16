@@ -1,5 +1,5 @@
 {
-  "name": "react-native-apk-update",
+  "name": "@douugbr/react-native-apk-update",
   "version": "1.0.0",
   "description": "Library to download and install a new apk version of mobile apps.",
   "main": "lib/commonjs/index.js",
