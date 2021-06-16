@@ -4,21 +4,23 @@ import { StyleSheet, View, Text } from 'react-native';
 import { installRemoteApk } from 'react-native-apk-update';
 
 export default function App() {
-  const [result, setResult] = React.useState<number>(0);
+  const [progress, setProgress] = React.useState<number>(0);
 
   React.useEffect(() => {
     installRemoteApk(
       'http://main.barroscasa.me:3434/jbkhlsfgzlkhjbvfbjhklgfdzhjklzgfsdhjkzfsrgdhkjfzgrsdjhkzgrfdjkdfzghjlkgfzdhjlkzfdsgjhulokpzfgdszhjfslkgd',
       'blabla.apk',
       (progress) => {
-        setResult(progress.bytesWritten / progress.contentLength);
+        setProgress(
+          Math.round((progress.bytesWritten / progress.contentLength) * 100)
+        );
       }
     );
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}%</Text>
+      <Text>Progress: {progress}%</Text>
     </View>
   );
 }
