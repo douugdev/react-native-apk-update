@@ -1,6 +1,6 @@
 # react-native-apk-update
 
-A JS/TS Library to download and install a new apk version of mobile apps. Wrapper of [react-native-apk-installer-n](https://github.com/nodece/react-native-apk-installer-n) with support to legacy android versions.
+A JS/TS Library to download and install a new apk version of mobile apps. Wrapper of [react-native-apk-installer-n](https://github.com/nodece/react-native-apk-installer-n) with support to legacy android versions. Design to update existing applications e.g.: if you have app A and needs to update it from inside itself, you should create a update Alert that will use this lib to download and install the respective apk from your http server/api.
 
 ## Installation
 
@@ -8,7 +8,7 @@ A JS/TS Library to download and install a new apk version of mobile apps. Wrappe
 npm install react-native-apk-update
 ```
 
-Dependencies:
+Dependencies (in case of errors):
 
 ```sh
 npm install react-native-device-info
@@ -35,7 +35,7 @@ installRemoteApk(
 
 ## Docs
 
-##### _installRemoteApk(remoteUrl: string, filename: string, callback?: (downloadInfo: RNFS.DownloadProgressCallbackResult) => void)_
+#### _installRemoteApk(remoteUrl: string, filename: string, callback?: (downloadInfo: RNFS.DownloadProgressCallbackResult) => void)_
 
 ## Contributing
 
