@@ -42,7 +42,7 @@ installRemoteApk(
 
 `filePath`: The local uri where your apk is located.
 
-#### _ async installRemoteApk(remoteUrl: string, filename: string, callback?: (downloadInfo: RNFS.DownloadProgressCallbackResult) => void, absoluteFilePath?: string)_
+#### _async installRemoteApk(remoteUrl: string, filename: string, callback?: (downloadInfo: RNFS.DownloadProgressCallbackResult) => void, absoluteFilePath?: string)_
 
 `remoteUrl`: The url in which your apk is served.
 `filename`: The filename which will be saved in your documents folder.
