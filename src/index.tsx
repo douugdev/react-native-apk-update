@@ -3,8 +3,8 @@ import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 
 interface IApkUpdate {
-  installApk(filePath: string): Promise<string>;
-  installApkLegacy(filePath: string): Promise<string>;
+  installApk(filePath: string): Promise<void>;
+  installApkLegacy(filePath: string): Promise<void>;
 }
 
 const { ApkUpdate } = NativeModules;
@@ -12,9 +12,17 @@ const { ApkUpdate } = NativeModules;
 const installRemoteApk = async (
   remoteUrl: string,
   fileName: string,
-  progressFunction?: (res: RNFS.DownloadProgressCallbackResult) => void
-) => {
-  const filePath = RNFS.DocumentDirectoryPath + '/' + fileName;
+  progressFunction?: (res: RNFS.DownloadProgressCallbackResult) => void,
+  absoluteFilePath?: string
+): Promise<void> => {
+  let filePath: string;
+
+  if (absoluteFilePath) {
+    filePath = absoluteFilePath + '/' + fileName;
+  } else {
+    filePath = RNFS.DocumentDirectoryPath + '/' + fileName;
+  }
+
   let download = await RNFS.downloadFile({
     fromUrl: remoteUrl,
     toFile: filePath,
@@ -36,10 +44,8 @@ const installRemoteApk = async (
   });
 };
 
-const installApp = async (filePath: string) => {
-  // Método legado para android 6 ou menor NÃO é incluido na dependência ApkUpdate
-  // Esta função foi extraída de outra dependência chamada AppUpdate, utilizada no Biju
-  // Para mais informações, verifique o arquivo Notas sobre o App.txt na raíz do projeto
+const installApp = async (filePath: string): Promise<void> => {
+  // Método legado para android 6
 
   let systemVersion = Number.parseInt(DeviceInfo.getSystemVersion());
   if (systemVersion >= 7) {
@@ -49,4 +55,4 @@ const installApp = async (filePath: string) => {
   }
 };
 
-export { installRemoteApk };
+export { installRemoteApk, installApp };
