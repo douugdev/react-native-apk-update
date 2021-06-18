@@ -5,7 +5,10 @@ A JS/TS Library to download and install a new apk version of mobile apps. Wrappe
 ## Installation
 
 ```sh
-npm install react-native-apk-update
+npm install @douugbr/react-native-apk-update
+
+# For older RN versions
+react-native link @douugbr/react-native-apk-update
 ```
 
 Dependencies (in case of errors):
@@ -36,6 +39,10 @@ installRemoteApk(
 ## Docs
 
 #### _installRemoteApk(remoteUrl: string, filename: string, callback?: (downloadInfo: RNFS.DownloadProgressCallbackResult) => void)_
+
+`remoteUrl`: The url in which your apk is served.
+`filename`: The filename which will be saved in your documents folder.
+`callback`: A callback that will track the apk download progress (not the install one). Example above.
 
 ## Contributing
 
