@@ -11,8 +11,7 @@ npm install @douugbr/react-native-apk-update
 react-native link @douugbr/react-native-apk-update
 ```
 
-Dependencies (in case of errors):
-
+These are also needed as peer dependencies:
 ```sh
 npm install react-native-device-info
 npm install react-native-fs
